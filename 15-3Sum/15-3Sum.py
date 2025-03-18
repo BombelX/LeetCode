@@ -7,7 +7,6 @@ class Solution:
                 total = nums[l] + nums[r]
                 if total == target:
                     result.append([nums[i], nums[l], nums[r]])
-                    # Skip duplicates for `l` and `r`
                     while l < r and nums[l] == nums[l + 1]:
                         l += 1
                     while l < r and nums[r] == nums[r - 1]:
@@ -24,7 +23,7 @@ class Solution:
         res = []
         
         for i in range(len(nums)):
-            if i > 0 and nums[i] == nums[i - 1]:  # Skip duplicates for `i`
+            if i > 0 and nums[i] == nums[i - 1]: 
                 continue
             target = -nums[i]
             res.extend(two_sum(nums, target, i))
