@@ -1,13 +1,12 @@
-# Last updated: 23.04.2025, 10:11:35
-from collections import deque
+# Last updated: 23.04.2025, 10:23:59
 # Definition for a binary tree node.
-class TreeNode:
-     def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
 
@@ -32,13 +31,13 @@ class Solution:
                     if len(dist)<= ver.right.val[1]:
                         dist.append([ver.right.val[0]])
                     else:
-                        print(ver.right.val[1],dist)
                         dist[ver.right.val[1]].append(ver.right.val[0])
                     queue.append(ver.right)
             return dist
-        return bfs(root) 
-                
-
-
-
-
+        dist = bfs(root)
+        res = []
+        for i,elem in enumerate(dist):
+            if i%2 == 1:
+                elem.reverse()
+            res.append(elem)
+        return res
