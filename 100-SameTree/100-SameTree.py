@@ -1,45 +1,44 @@
-# Last updated: 16.04.2025, 09:27:36
-from collections import *
-
+# Last updated: 23.04.2025, 10:11:35
+from collections import deque
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+     def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        if not p and not q:
-            return True
-        elif not p or not q:
-            return False
-        visited_p = [0]*100
-        visited_q = [0]*100
-        visited_p[0],visited_q[0] = 2,2
-        q1 = deque([p])
-        q2 = deque([q])
-        while q1 and q2:
-            v1,v2 = q1.pop(),q2.pop()
-            if v1.val != v2.val:
-                return False
-            tab = [0,0,0,0]
-            if v1.left:
-                tab[0] = 1
-            if v2.left:
-                tab[1] = 1
-            if v1.right:
-                tab[2] = 1
-            if v2.right:
-                tab[3] = 1
-            if tab[0]+tab[1] == 1:
-                return False
-            elif tab[0]+tab[1] == 2:
-                q1.append(v1.left)
-                q2.append(v2.left)
-            if tab[2]+tab[3] == 1:
-                return False
-            elif tab[3]+tab[2] == 2:
-                q1.append(v1.right)
-                q2.append(v2.right)
-            
-        return True
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+
+        def bfs(v):
+            v.val = [v.val,0]
+            dist = [[v.val[0]]]
+            queue = deque()
+            queue.append(v)
+            while queue:
+                ver = queue.popleft()
+                if ver.left:
+                    ver.left.val = [ver.left.val,ver.val[1]+1]  
+                    if len(dist)<= ver.left.val[1]:
+                        dist.append([ver.left.val[0]])
+                    else:
+                        dist[ver.left.val[1]].append(ver.left.val[0])
+
+                    queue.append(ver.left)
+
+                if ver.right:
+                    ver.right.val = [ver.right.val,ver.val[1]+1]  
+                    if len(dist)<= ver.right.val[1]:
+                        dist.append([ver.right.val[0]])
+                    else:
+                        print(ver.right.val[1],dist)
+                        dist[ver.right.val[1]].append(ver.right.val[0])
+                    queue.append(ver.right)
+            return dist
+        return bfs(root) 
+                
+
+
+
+
