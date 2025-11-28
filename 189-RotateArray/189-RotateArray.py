@@ -1,4 +1,4 @@
-# Last updated: 28.11.2025, 19:20:01
+# Last updated: 28.11.2025, 19:20:20
 1class Solution:
 2    def rotate(self, nums: List[int], k: int) -> None:
 3        n = len(nums)
