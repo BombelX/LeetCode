@@ -1,4 +1,4 @@
-# Last updated: 28.11.2025, 17:38:59
+# Last updated: 28.11.2025, 17:39:12
 1class Solution:
 2    def maxProfit(self, prices: List[int]) -> int:
 3        min_meeted = float('inf')
