@@ -1,4 +1,4 @@
-# Last updated: 10.12.2025, 20:23:22
+# Last updated: 10.12.2025, 20:23:28
 1class Solution:
 2    def findMaxLength(self, nums: List[int]) -> int:
 3        first_visitation = {0:-1}
