@@ -1,4 +1,4 @@
-# Last updated: 5.01.2026, 15:40:35
+# Last updated: 5.01.2026, 15:41:07
 1class Solution:
 2    def countAndSay(self, n: int) -> str:
 3        def RLE(num):
@@ -18,5 +18,4 @@
 17        x = '1'
 18        for i in range(1,n):
 19            x = RLE(x)[1:]
-20            print(x)
-21        return x
+20        return x
