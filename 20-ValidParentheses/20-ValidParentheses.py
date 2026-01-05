@@ -1,22 +1,27 @@
-class Solution:
-    def isValid(self, s: str) -> bool:
-        brack = {
-            "(":")",
-            "[":"]",
-            "{":"}"
-
-        }
-        open_brackets = []
-        for bracket in s:
-            if bracket in "({[":
-                open_brackets.append(bracket)
-            else:
-                if len(open_brackets) == 0 :return False
-                if bracket == brack[open_brackets[-1]]:
-                    open_brackets.pop()
-                else:
-                    return False
-        if  len(open_brackets) == 0:
-            return True
-        return False
-            
+# Last updated: 5.01.2026, 18:45:32
+1from collections import deque
+2
+3class Solution:
+4    def isValid(self, s: str) -> bool:
+5        stack = deque()
+6
+7        for bracket in s:
+8            if bracket == '(' or bracket == '[' or bracket == '{':
+9                stack.append(bracket)
+10            else:
+11                if not stack:
+12                    return False
+13                b = stack.pop()
+14                if b == '(' and bracket == ')':
+15                    continue
+16                elif b == '{' and bracket == '}':
+17                    continue
+18                elif b == '[' and bracket == ']':
+19                    continue
+20                else:
+21                    return False
+22        if stack:
+23            return False
+24        return True
+25
+26
