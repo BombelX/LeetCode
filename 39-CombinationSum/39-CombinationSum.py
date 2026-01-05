@@ -1,9 +1,9 @@
-# Last updated: 5.01.2026, 14:14:36
+# Last updated: 5.01.2026, 14:15:21
 1
 2class Solution:
 3    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 4        solution = set()
-5        
+5        candidates.sort()
 6        def recu(number,tab,ind):
 7            if number == target:
 8                solution.add(tuple(tab[:]))
