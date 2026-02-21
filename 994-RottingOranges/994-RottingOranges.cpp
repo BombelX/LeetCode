@@ -1,4 +1,4 @@
-// Last updated: 22.02.2026, 00:11:17
+// Last updated: 22.02.2026, 00:11:50
 1#include <array>
 2class Solution {
 3public:
@@ -28,23 +28,25 @@
 27    
 28
 29    int orangesRotting(vector<vector<int>>& grid) {
-30        queue<array<int, 3>> q;
-31        for (int i = 0; i < grid.size() ; i++){
-32            for (int j = 0; j < grid[0].size() ; j++){
-33                if(grid[i][j] == 2){
-34                    grid[i][j] = 1;
-35                    q.push({i,j,0});
-36                } 
-37            }
-38        }
-39        int res = bfs(grid,q,grid.size(),grid[0].size());
-40        for (int i = 0; i < grid.size() ; i++){
-41            for (int j = 0; j < grid[0].size() ; j++){
-42                if(grid[i][j] == 1){
-43                    return -1;
-44                } 
-45            }
-46        }
-47        return res;
-48    }
-49};
+30        ios_base::sync_with_stdio(false);
+31        cin.tie(NULL); 
+32        queue<array<int, 3>> q;
+33        for (int i = 0; i < grid.size() ; i++){
+34            for (int j = 0; j < grid[0].size() ; j++){
+35                if(grid[i][j] == 2){
+36                    grid[i][j] = 1;
+37                    q.push({i,j,0});
+38                } 
+39            }
+40        }
+41        int res = bfs(grid,q,grid.size(),grid[0].size());
+42        for (int i = 0; i < grid.size() ; i++){
+43            for (int j = 0; j < grid[0].size() ; j++){
+44                if(grid[i][j] == 1){
+45                    return -1;
+46                } 
+47            }
+48        }
+49        return res;
+50    }
+51};
