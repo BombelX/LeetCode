@@ -1,4 +1,4 @@
-// Last updated: 21.02.2026, 21:07:53
+// Last updated: 21.02.2026, 21:11:22
 1#include <tuple>
 2#include <vector>
 3class Solution {
@@ -18,17 +18,19 @@
 17    }
 18
 19    int numIslands(vector<vector<char>>& grid) {
-20        int m = grid[0].size();
-21        int n = grid.size();
-22        int island = 0;
-23        for (int i = 0; i<n ; i++){
-24            for (int j =0; j<m ; j++){
-25                if (grid[i][j] == '1'){
-26                    island++;
-27                    dfs(grid,i,j,n,m);
-28                }
-29            }
-30        }   
-31        return island   ;
-32    }
-33};
+20        ios_base::sync_with_stdio(false);
+21        cin.tie(NULL);
+22        int m = grid[0].size();
+23        int n = grid.size();
+24        int island = 0;
+25        for (int i = 0; i<n ; i++){
+26            for (int j =0; j<m ; j++){
+27                if (grid[i][j] == '1'){
+28                    island++;
+29                    dfs(grid,i,j,n,m);
+30                }
+31            }
+32        }   
+33        return island   ;
+34    }
+35};
