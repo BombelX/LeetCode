@@ -1,4 +1,4 @@
-# Last updated: 22.08.2026, 21:32:07
+# Last updated: 22.08.2026, 21:32:20
 1class Solution:
 2    def findMin(self, nums: List[int]) -> int:
 3        start = 0
@@ -7,7 +7,7 @@
 6
 7        while start<end:
 8            mid = (start + end) // 2
-9            print(mid,nums[mid])
+9            # print(mid,nums[mid])
 10            if nums[mid] > nums[end] :
 11                start = mid+1
 12            else:
